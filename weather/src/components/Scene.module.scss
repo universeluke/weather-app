@@ -27,7 +27,7 @@
 .leftHill {
   position: absolute;
   bottom: -1100px;
-  right: calc(50vw - 100px);
+  right: calc(30vw - 100px);
   height: 1600px;
   width: 2200px;
   border-radius: 50%;
@@ -63,8 +63,20 @@
   width: 11px;
   height: 11px;
   background-color: rgb(232, 196, 129);
-  box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);
   animation: firePulse 2s infinite;
+}
+
+.smoke {
+  position: fixed;
+  bottom: 307px;
+  right: 173px;
+  z-index: 200;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  z-index: 0;
+  animation: smokeRise 4s infinite linear;
 }
 
 @keyframes firePulse {
@@ -72,9 +84,48 @@
     box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);
   }
   50% {
-    box-shadow: 0px 0px 30px 5px rgb(255, 208, 54);
+    box-shadow: 0px 0px 30px 6px rgb(255, 208, 54);
   }
   100% {
     box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);
+  }
+}
+
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+  10% {
+    transform: translateY(-10px) translateX(2px) scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-20px) translateX(0px) scale(1.2);
+    opacity: 0.8;
+  }
+  30% {
+    transform: translateY(-30px) translateX(0px) scale(1.3);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translateY(-40px) translateX(-3px) scale(1.4);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-50px) translateX(0px) scale(1.55);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translateY(-60px) translateX(7px) scale(1.7);
+    opacity: 0.4;
+  }
+  80% {
+    transform: translateY(-80px) translateX(-8px) scale(2);
+    opacity: 0.27;
+  }
+  100% {
+    transform: translateY(-100px) translateX(9px) scale(2.4);
+    opacity: 0;
   }
 }

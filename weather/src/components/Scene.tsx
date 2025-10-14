@@ -21,6 +21,7 @@ export default function Scene() {
           />
         </svg>
         <div className={styles.hill}></div>
+        <div className={styles.smoke}></div>
         <div className={styles.fireContainer}>
           <div className={styles.fireGlow}></div>
           <div className={styles.fireGlow}></div>
