@@ -45,3 +45,23 @@
   background-color: rgb(168, 202, 214);
   z-index: -1;
 }
+
+.fireContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 15px 15px;
+  grid-template-rows: 15px 15px;
+  right: -287px;
+  bottom: 1086px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+}
+
+.fireGlow {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  background-color: rgb(232, 196, 129);
+  box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);
+}

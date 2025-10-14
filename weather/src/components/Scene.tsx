@@ -1,6 +1,8 @@
 import styles from "./Scene.module.scss";
 
 export default function Scene() {
+  //IDEA: sunrise and sunset, depending on time, different positions, get angle from bottom 0 middle, draw circle and plot it
+  //IDEA: when it's cold, smoke out chimney
   return (
     <div>
       <div className={styles.backgroundHill}></div>
@@ -19,6 +21,12 @@ export default function Scene() {
           />
         </svg>
         <div className={styles.hill}></div>
+        <div className={styles.fireContainer}>
+          <div className={styles.fireGlow}></div>
+          <div className={styles.fireGlow}></div>
+          <div className={styles.fireGlow}></div>
+          <div className={styles.fireGlow}></div>
+        </div>
       </div>
     </div>
   );
