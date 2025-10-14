@@ -64,4 +64,17 @@
   height: 11px;
   background-color: rgb(232, 196, 129);
   box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);
+  animation: firePulse 2s infinite;
+}
+
+@keyframes firePulse {
+  0% {
+    box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);
+  }
+  50% {
+    box-shadow: 0px 0px 30px 5px rgb(255, 208, 54);
+  }
+  100% {
+    box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);
+  }
 }
