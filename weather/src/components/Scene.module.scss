@@ -1,0 +1,47 @@
+.houseOnHill {
+  position: absolute;
+  bottom: -700px;
+  right: -500px;
+  height: 1000px;
+  width: 1000px;
+  z-index: 2;
+}
+
+.house {
+  position: relative;
+  right: -250px;
+  bottom: 34px;
+  z-index: 1;
+}
+
+.hill {
+  position: relative;
+  height: 1000px;
+  width: 1200px;
+  right: 300px;
+  bottom: 50px;
+  border-radius: 50%;
+  background-color: rgb(74, 144, 169);
+}
+
+.leftHill {
+  position: absolute;
+  bottom: -1100px;
+  right: calc(50vw - 100px);
+  height: 1600px;
+  width: 2200px;
+  border-radius: 50%;
+  background-color: rgb(48, 100, 119);
+  z-index: 3;
+}
+
+.backgroundHill {
+  position: absolute;
+  bottom: -1550px;
+  right: calc(-20vw - 1000px);
+  height: 2000px;
+  width: 3000px;
+  border-radius: 50%;
+  background-color: rgb(168, 202, 214);
+  z-index: -1;
+}
