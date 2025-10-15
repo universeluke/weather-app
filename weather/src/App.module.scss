@@ -1,12 +1,14 @@
 .locationTitle {
-  background: rgba(255, 255, 255, 0.098);
+  font-family: "LEMONMILK";
+  background: rgba(255, 255, 255, 0.131);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 3px;
   outline: none;
   color: white;
-  font-size: 50px;
+  height: 60px;
+  font-size: 40px;
   margin-top: 20px;
   margin-left: 20px;
   max-width: 400px;
@@ -24,6 +26,7 @@ p {
 }
 
 .weatherInfoContainer {
+  font-family: "LEMONMILK";
   position: absolute;
   height: 120px;
   display: flex;

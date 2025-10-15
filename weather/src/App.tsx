@@ -66,7 +66,7 @@ function App() {
       currentWeatherData.current.is_day === 1 &&
       currentWeatherData.current.rain <= 0 &&
       currentWeatherData.current.snowfall <= 0 &&
-      currentWeatherData.current.cloud_cover < 100
+      currentWeatherData.current.cloud_cover <= 20
     ) {
       setDayNight("clearDay");
     }
@@ -74,25 +74,49 @@ function App() {
       currentWeatherData.current.is_day === 0 &&
       currentWeatherData.current.rain <= 0 &&
       currentWeatherData.current.snowfall <= 0 &&
-      currentWeatherData.current.cloud_cover < 100
+      currentWeatherData.current.cloud_cover <= 20
     ) {
       setDayNight("clearNight");
     }
     if (
       currentWeatherData.current.is_day === 1 &&
-      currentWeatherData.current.rain > 0 &&
+      currentWeatherData.current.rain <= 0 &&
       currentWeatherData.current.snowfall <= 0 &&
-      currentWeatherData.current.cloud_cover < 100
+      currentWeatherData.current.cloud_cover > 20
+    ) {
+      setDayNight("cloudyDay");
+    }
+    if (
+      currentWeatherData.current.is_day === 0 &&
+      currentWeatherData.current.rain <= 0 &&
+      currentWeatherData.current.snowfall <= 0 &&
+      currentWeatherData.current.cloud_cover > 20
+    ) {
+      setDayNight("cloudyNight");
+    }
+    if (
+      currentWeatherData.current.is_day === 1 &&
+      currentWeatherData.current.rain > 0
     ) {
       setDayNight("rainyDay");
     }
     if (
       currentWeatherData.current.is_day === 0 &&
-      currentWeatherData.current.rain > 0 &&
-      currentWeatherData.current.snowfall <= 0 &&
-      currentWeatherData.current.cloud_cover < 100
+      currentWeatherData.current.rain > 0
     ) {
       setDayNight("rainyNight");
+    }
+    if (
+      currentWeatherData.current.is_day === 1 &&
+      currentWeatherData.current.snowfall > 0
+    ) {
+      setDayNight("snowyDay");
+    }
+    if (
+      currentWeatherData.current.is_day === 0 &&
+      currentWeatherData.current.snowfall > 0
+    ) {
+      setDayNight("snowyNight");
     }
   }, [currentWeatherData]);
 
@@ -118,7 +142,7 @@ function App() {
           </p>
         </div>
       ) : null}
-      {currentWeatherData ? <Weather time={dayNight} /> : ""}
+      {currentWeatherData ? <Weather conditions={dayNight} /> : ""}
     </>
   );
 }

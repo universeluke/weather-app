@@ -1,4 +1,8 @@
 body {
   overflow: hidden;
-  background-color: rgb(60, 36, 118);
+}
+
+@font-face {
+  font-family: "LEMONMILK";
+  src: local("LEMONMILK"), url("./fonts/LEMONMILK-Light.otf") format("opentype");
 }
