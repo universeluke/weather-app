@@ -61,13 +61,9 @@ function App() {
 
   useEffect(() => {
     if (!currentWeatherData) return;
-    const sunrise = new Date(currentWeatherData.daily.sunrise[0]);
-    const sunset = new Date(currentWeatherData.daily.sunset[0]);
-    const currentTime = new Date(currentWeatherData.current.time);
 
     if (
-      sunrise <= currentTime &&
-      currentTime <= sunset &&
+      currentWeatherData.current.is_day === 1 &&
       currentWeatherData.current.rain <= 0 &&
       currentWeatherData.current.snowfall <= 0 &&
       currentWeatherData.current.cloud_cover < 100
@@ -75,17 +71,15 @@ function App() {
       setDayNight("clearDay");
     }
     if (
-      sunrise >= currentTime ||
-      (currentTime >= sunset &&
-        currentWeatherData.current.rain <= 0 &&
-        currentWeatherData.current.snowfall <= 0 &&
-        currentWeatherData.current.cloud_cover < 100)
+      currentWeatherData.current.is_day === 0 &&
+      currentWeatherData.current.rain <= 0 &&
+      currentWeatherData.current.snowfall <= 0 &&
+      currentWeatherData.current.cloud_cover < 100
     ) {
       setDayNight("clearNight");
     }
     if (
-      sunrise < currentTime &&
-      currentTime < sunset &&
+      currentWeatherData.current.is_day === 1 &&
       currentWeatherData.current.rain > 0 &&
       currentWeatherData.current.snowfall <= 0 &&
       currentWeatherData.current.cloud_cover < 100
@@ -93,23 +87,13 @@ function App() {
       setDayNight("rainyDay");
     }
     if (
-      sunrise > currentTime ||
-      (currentTime > sunset &&
-        currentWeatherData.current.rain > 0 &&
-        currentWeatherData.current.snowfall <= 0 &&
-        currentWeatherData.current.cloud_cover < 100)
+      currentWeatherData.current.is_day === 0 &&
+      currentWeatherData.current.rain > 0 &&
+      currentWeatherData.current.snowfall <= 0 &&
+      currentWeatherData.current.cloud_cover < 100
     ) {
       setDayNight("rainyNight");
     }
-    // if (
-    //   sunrise < currentTime &&
-    //   currentTime < sunset &&
-    //   currentWeatherData.current.rain <= 0 &&
-    //   currentWeatherData.current.snowfall <= 0 &&
-    //   currentWeatherData.current.cloud_cover > 20
-    // ) {
-    //   setDayNight("rainyDay");
-    // }
   }, [currentWeatherData]);
 
   return (
