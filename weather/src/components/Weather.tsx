@@ -1,5 +1,9 @@
 import Scene from "./Scene";
 
-export default function Weather() {
-  return <Scene />;
+interface WeatherProps {
+  time: string;
+}
+
+export default function Weather({ time }: WeatherProps) {
+  return <Scene time={time} />;
 }

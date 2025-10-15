@@ -9,11 +9,11 @@ function App() {
     null
   );
   const [currentWeatherData, setCurrentWeatherData] = useState<any>(null);
+  const [dayNight, setDayNight] = useState<string>("day");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log(position);
         setCoords({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     if (!coords) return;
     const fetchWeather = async () => {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current=temperature_2m,is_day,cloud_cover,rain,snowfall,wind_speed_10m&timezone=auto&forecast_days=1`;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&daily=sunrise,sunset&current=temperature_2m,is_day,cloud_cover,rain,snowfall,wind_speed_10m&timezone=auto&forecast_days=1`;
       try {
         const res = await fetch(url);
         const data = await res.json();
@@ -59,6 +59,59 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    if (!currentWeatherData) return;
+    const sunrise = new Date(currentWeatherData.daily.sunrise[0]);
+    const sunset = new Date(currentWeatherData.daily.sunset[0]);
+    const currentTime = new Date(currentWeatherData.current.time);
+
+    if (
+      sunrise <= currentTime &&
+      currentTime <= sunset &&
+      currentWeatherData.current.rain <= 0 &&
+      currentWeatherData.current.snowfall <= 0 &&
+      currentWeatherData.current.cloud_cover < 100
+    ) {
+      setDayNight("clearDay");
+    }
+    if (
+      sunrise >= currentTime ||
+      (currentTime >= sunset &&
+        currentWeatherData.current.rain <= 0 &&
+        currentWeatherData.current.snowfall <= 0 &&
+        currentWeatherData.current.cloud_cover < 100)
+    ) {
+      setDayNight("clearNight");
+    }
+    if (
+      sunrise < currentTime &&
+      currentTime < sunset &&
+      currentWeatherData.current.rain > 0 &&
+      currentWeatherData.current.snowfall <= 0 &&
+      currentWeatherData.current.cloud_cover < 100
+    ) {
+      setDayNight("rainyDay");
+    }
+    if (
+      sunrise > currentTime ||
+      (currentTime > sunset &&
+        currentWeatherData.current.rain > 0 &&
+        currentWeatherData.current.snowfall <= 0 &&
+        currentWeatherData.current.cloud_cover < 100)
+    ) {
+      setDayNight("rainyNight");
+    }
+    // if (
+    //   sunrise < currentTime &&
+    //   currentTime < sunset &&
+    //   currentWeatherData.current.rain <= 0 &&
+    //   currentWeatherData.current.snowfall <= 0 &&
+    //   currentWeatherData.current.cloud_cover > 20
+    // ) {
+    //   setDayNight("rainyDay");
+    // }
+  }, [currentWeatherData]);
+
   return (
     <>
       <input
@@ -81,7 +134,7 @@ function App() {
           </p>
         </div>
       ) : null}
-      <Weather />
+      {currentWeatherData ? <Weather time={dayNight} /> : ""}
     </>
   );
 }
