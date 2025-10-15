@@ -1,0 +1,48 @@
+.locationTitle {
+  background: rgba(255, 255, 255, 0.098);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  color: white;
+  font-size: 50px;
+  margin-top: 20px;
+  margin-left: 20px;
+  max-width: 400px;
+  &:focus {
+    border-color: transparent;
+    outline: none;
+  }
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+p {
+  color: white;
+}
+
+.weatherInfoContainer {
+  position: absolute;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  right: 80px;
+  top: 60px;
+  .temperature {
+    font-size: 70px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+  }
+  .time {
+    position: absolute;
+    font-size: 25px;
+    bottom: 0px;
+    right: 0px;
+    padding: 0px;
+    padding-top: 20px;
+    margin: 0px;
+  }
+}
