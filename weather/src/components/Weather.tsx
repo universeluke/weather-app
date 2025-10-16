@@ -8,6 +8,7 @@ interface WeatherProps {
 
 export default function Weather({ conditions }: WeatherProps) {
   const [stars, setStars] = useState([]);
+  const [rain, setRain] = useState([]);
 
   useEffect(() => {
     const generatedStars = Array.from({ length: 100 }, () => ({
@@ -16,6 +17,15 @@ export default function Weather({ conditions }: WeatherProps) {
       delay: Math.random() * 2,
     }));
     setStars(generatedStars);
+  }, []);
+
+  useEffect(() => {
+    const generatedRain = Array.from({ length: 100 }, () => ({
+      left: Math.random() * 100,
+      delay: Math.random() * 4,
+      duration: Math.random() * 2.5 + 2,
+    }));
+    setRain(generatedRain);
   }, []);
 
   const stylesChange = {
@@ -59,6 +69,35 @@ export default function Weather({ conditions }: WeatherProps) {
       cloudyDay: { opacity: "0" },
       snowyDay: { opacity: "0" },
     },
+    rainContainer: {
+      clearNight: { opacity: "0" },
+      rainyNight: { opacity: "1" },
+      cloudyNight: { opacity: "0" },
+      snowyNight: { opacity: "0" },
+      clearDay: { opacity: "0" },
+      rainyDay: { opacity: "1" },
+      cloudyDay: { opacity: "0" },
+      snowyDay: { opacity: "0" },
+    },
+    rain: {
+      clearNight: `none`,
+      rainyNight: `linear-gradient(
+    to top,
+    rgba(134, 190, 255, 1),
+    rgba(0, 136, 255, 0)
+  )`,
+      cloudyNight: `none`,
+      snowyNight: `none`,
+      clearDay: `none`,
+      rainyDay: `linear-gradient(
+    to top,
+    rgba(36, 50, 63, 1),
+    rgba(35, 49, 61, 0.26),
+    rgba(61, 84, 106, 0)
+  )`,
+      cloudyDay: { opacity: "0" },
+      snowyDay: { opacity: "0" },
+    },
   };
 
   document.body.style.backgroundColor = stylesChange.sky[conditions];
@@ -79,6 +118,23 @@ export default function Weather({ conditions }: WeatherProps) {
               top: `${star.top}vh`,
               left: `${star.left}vw`,
               animationDelay: `${star.delay}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+      <div
+        className={styles.rainContainer}
+        style={stylesChange.rainContainer[conditions]}
+      >
+        {rain.map((rain, i) => (
+          <div
+            key={i}
+            className={styles.rain}
+            style={{
+              left: `${rain.left}vw`,
+              animationDelay: `${rain.delay}s`,
+              animationDuration: `${rain.duration}s`,
+              background: `${stylesChange.rain[conditions]}`,
             }}
           ></div>
         ))}
