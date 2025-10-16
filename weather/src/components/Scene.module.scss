@@ -82,6 +82,15 @@
   animation: smokeRise 4s infinite linear;
 }
 
+.houseSnow {
+  position: absolute;
+  bottom: 942px;
+  right: 650px;
+  z-index: 0;
+  fill: white;
+  transition: opacity 3s ease;
+}
+
 @keyframes firePulse {
   0% {
     box-shadow: 0px 0px 30px 3px rgb(255, 201, 24);

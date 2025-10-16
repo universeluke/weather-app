@@ -6,7 +6,6 @@
   border: none;
   border-radius: 3px;
   outline: none;
-  color: white;
   height: 60px;
   font-size: 40px;
   margin-top: 20px;
@@ -20,10 +19,6 @@
   &::placeholder {
     color: rgba(255, 255, 255, 0.4);
   }
-}
-
-p {
-  color: white;
 }
 
 .weatherInfoContainer {

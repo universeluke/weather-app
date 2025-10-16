@@ -118,12 +118,27 @@ function App() {
     ) {
       setDayNight("snowyNight");
     }
+    setDayNight("snowyNight");
   }, [currentWeatherData]);
+
+  const stylesChange = {
+    fontColour: {
+      clearNight: { color: "white" },
+      rainyNight: { color: "white" },
+      cloudyNight: { color: "white" },
+      snowyNight: { color: "white" },
+      clearDay: { color: "white" },
+      rainyDay: { color: "white" },
+      cloudyDay: { color: "white" },
+      snowyDay: { color: "rgba(107, 107, 107, 1)" },
+    },
+  };
 
   return (
     <>
       <input
         className={styles.locationTitle}
+        style={stylesChange.fontColour[dayNight]}
         autoFocus
         onChange={(e) => setCurrentLocation(e.target.value)}
         onKeyDown={(e) => {
@@ -133,7 +148,10 @@ function App() {
         }}
       ></input>
       {currentWeatherData ? (
-        <div className={styles.weatherInfoContainer}>
+        <div
+          className={styles.weatherInfoContainer}
+          style={stylesChange.fontColour[dayNight]}
+        >
           <p className={styles.temperature}>
             {currentWeatherData.current.temperature_2m} °C
           </p>

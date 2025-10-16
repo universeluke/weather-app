@@ -8,7 +8,8 @@ interface WeatherProps {
 
 export default function Weather({ conditions }: WeatherProps) {
   const [stars, setStars] = useState([]);
-  const [rain, setRain] = useState([]);
+  const [rains, setRains] = useState([]);
+  const [snows, setSnows] = useState([]);
 
   useEffect(() => {
     const generatedStars = Array.from({ length: 100 }, () => ({
@@ -25,7 +26,16 @@ export default function Weather({ conditions }: WeatherProps) {
       delay: Math.random() * 4,
       duration: Math.random() * 2.5 + 2,
     }));
-    setRain(generatedRain);
+    setRains(generatedRain);
+  }, []);
+
+  useEffect(() => {
+    const generatedSnow = Array.from({ length: 100 }, () => ({
+      left: Math.random() * 100,
+      delay: Math.random() * 12.5,
+      duration: Math.random() * 2.5 + 10,
+    }));
+    setSnows(generatedSnow);
   }, []);
 
   const stylesChange = {
@@ -47,7 +57,7 @@ export default function Weather({ conditions }: WeatherProps) {
       clearDay: "rgba(148, 172, 234, 1)",
       rainyDay: "rgba(175, 175, 175, 1)",
       cloudyDay: "rgba(147, 167, 180, 1)",
-      snowyDay: "rgba(213, 213, 213, 1)",
+      snowyDay: "rgba(229, 229, 229, 1)",
     },
     sun: {
       clearNight: { opacity: "0" },
@@ -95,8 +105,18 @@ export default function Weather({ conditions }: WeatherProps) {
     rgba(35, 49, 61, 0.26),
     rgba(61, 84, 106, 0)
   )`,
+      cloudyDay: `none`,
+      snowyDay: `none`,
+    },
+    snowContainer: {
+      clearNight: { opacity: "0" },
+      rainyNight: { opacity: "0" },
+      cloudyNight: { opacity: "0" },
+      snowyNight: { opacity: "1" },
+      clearDay: { opacity: "0" },
+      rainyDay: { opacity: "0" },
       cloudyDay: { opacity: "0" },
-      snowyDay: { opacity: "0" },
+      snowyDay: { opacity: "1" },
     },
   };
 
@@ -126,7 +146,7 @@ export default function Weather({ conditions }: WeatherProps) {
         className={styles.rainContainer}
         style={stylesChange.rainContainer[conditions]}
       >
-        {rain.map((rain, i) => (
+        {rains.map((rain, i) => (
           <div
             key={i}
             className={styles.rain}
@@ -135,6 +155,22 @@ export default function Weather({ conditions }: WeatherProps) {
               animationDelay: `${rain.delay}s`,
               animationDuration: `${rain.duration}s`,
               background: `${stylesChange.rain[conditions]}`,
+            }}
+          ></div>
+        ))}
+      </div>
+      <div
+        className={styles.snowContainer}
+        style={stylesChange.snowContainer[conditions]}
+      >
+        {snows.map((snow, i) => (
+          <div
+            key={i}
+            className={styles.snow}
+            style={{
+              left: `${snow.left}vw`,
+              animationDelay: `${snow.delay}s`,
+              animationDuration: `${snow.duration}s`,
             }}
           ></div>
         ))}

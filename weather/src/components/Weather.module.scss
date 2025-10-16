@@ -44,6 +44,8 @@ body {
 }
 
 .rainContainer {
+  position: absolute;
+  top: -20px;
   transition: opacity 3s ease;
 }
 
@@ -54,6 +56,22 @@ body {
   animation: drop infinite;
   z-index: 1;
   border-radius: 50%;
+}
+
+.snowContainer {
+  position: absolute;
+  top: -20px;
+  transition: opacity 3s ease;
+}
+
+.snow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: snowFall infinite;
+  z-index: 1;
+  border-radius: 50%;
+  background: white;
 }
 
 @keyframes twinkle {
@@ -102,6 +120,17 @@ body {
   }
   100% {
     transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(-200px) translateX(150px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1000px) translateX(-150px);
     opacity: 0;
   }
 }
