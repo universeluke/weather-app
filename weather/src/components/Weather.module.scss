@@ -18,13 +18,43 @@ body {
 }
 
 .sun {
-  height: 70px;
-  width: 70px;
+  height: 30px;
+  width: 30px;
   position: absolute;
   top: 140px;
   left: 30vw;
-  background-color: rgb(255, 235, 53);
   border-radius: 50%;
+  transition: all 3s ease;
+}
+
+.moonContainer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0;
+  z-index: -3;
+  left: 100px;
+  top: 120px;
+  transition: opacity 2s ease;
+}
+
+.moonOuter {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: rgb(243, 243, 243);
+}
+
+.moonInner {
+  position: absolute;
+  top: 0px;
+  right: -15px;
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
+  background-color: rgb(130, 130, 130);
+  transition: background-color 2s ease;
 }
 
 .starsContainer {

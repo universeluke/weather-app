@@ -118,7 +118,7 @@ function App() {
     ) {
       setDayNight("snowyNight");
     }
-    setDayNight("snowyNight");
+    // setDayNight("clearNight");
   }, [currentWeatherData]);
 
   const stylesChange = {

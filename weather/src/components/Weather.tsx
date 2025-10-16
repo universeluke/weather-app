@@ -64,9 +64,17 @@ export default function Weather({ conditions }: WeatherProps) {
       rainyNight: { opacity: "0" },
       cloudyNight: { opacity: "0" },
       snowyNight: { opacity: "0" },
-      clearDay: { opacity: "1" },
+      clearDay: {
+        opacity: "1",
+        boxShadow: "0px 0px 50px 60px rgb(255, 235, 53)",
+        backgroundColor: "rgb(255, 235, 53)",
+      },
       rainyDay: { opacity: "0" },
-      cloudyDay: { opacity: "0" },
+      cloudyDay: {
+        opacity: "0.6",
+        boxShadow: "0px 0px 60px 60px rgba(228, 222, 161, 1)",
+        backgroundColor: "rgba(228, 222, 161, 1)",
+      },
       snowyDay: { opacity: "0" },
     },
     starsContainer: {
@@ -118,6 +126,26 @@ export default function Weather({ conditions }: WeatherProps) {
       cloudyDay: { opacity: "0" },
       snowyDay: { opacity: "1" },
     },
+    moonInner: {
+      clearNight: { backgroundColor: "rgba(74, 51, 94, 1)" },
+      rainyNight: { backgroundColor: "rgba(79, 79, 79, 1)" },
+      cloudyNight: { backgroundColor: "rgba(67, 63, 76, 1)" },
+      snowyNight: { backgroundColor: "rgba(66, 65, 71, 1)" },
+      clearDay: { backgroundColor: "rgba(148, 172, 234, 1)" },
+      rainyDay: { backgroundColor: "rgba(175, 175, 175, 1)" },
+      cloudyDay: { backgroundColor: "rgba(147, 167, 180, 1)" },
+      snowyDay: { backgroundColor: "rgba(229, 229, 229, 1)" },
+    },
+    moonContainer: {
+      clearNight: { opacity: "1" },
+      rainyNight: { opacity: "0" },
+      cloudyNight: { opacity: "1" },
+      snowyNight: { opacity: "0" },
+      clearDay: { opacity: "0" },
+      rainyDay: { opacity: "0" },
+      cloudyDay: { opacity: "0" },
+      snowyDay: { opacity: "0" },
+    },
   };
 
   document.body.style.backgroundColor = stylesChange.sky[conditions];
@@ -125,6 +153,17 @@ export default function Weather({ conditions }: WeatherProps) {
   return (
     <>
       <Scene conditions={conditions} />
+      <div
+        className={styles.moonContainer}
+        style={stylesChange.moonContainer[conditions]}
+      >
+        <div className={styles.moonOuter}>
+          <div
+            className={styles.moonInner}
+            style={stylesChange.moonInner[conditions]}
+          ></div>
+        </div>
+      </div>
       <div className={styles.sun} style={stylesChange.sun[conditions]}></div>
       <div
         className={styles.starsContainer}
