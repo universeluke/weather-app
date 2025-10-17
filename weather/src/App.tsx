@@ -181,7 +181,9 @@ function App() {
           <p className={styles.temperature}>
             {currentWeatherData.current.temperature_2m} °C
           </p>
-          <Thermometer />
+          <Thermometer
+            temperature={currentWeatherData.current.temperature_2m}
+          />
           <p className={styles.time}>
             {formatLocalTime(currentWeatherData.current.time)}
           </p>
