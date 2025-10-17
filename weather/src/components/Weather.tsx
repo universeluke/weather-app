@@ -68,6 +68,7 @@ export default function Weather({ conditions }: WeatherProps) {
         opacity: "1",
         boxShadow: "0px 0px 50px 60px rgb(255, 235, 53)",
         backgroundColor: "rgb(255, 235, 53)",
+        animation: "throb 2s ease-in-out infinite",
       },
       rainyDay: { opacity: "0" },
       cloudyDay: {
