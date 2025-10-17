@@ -1,7 +1,17 @@
 import styles from "./Scene.module.scss";
 
+type WeatherCondition =
+  | "clearDay"
+  | "clearNight"
+  | "rainyDay"
+  | "rainyNight"
+  | "cloudyDay"
+  | "cloudyNight"
+  | "snowyDay"
+  | "snowyNight";
+
 interface SceneProps {
-  conditions: string;
+  conditions: WeatherCondition;
 }
 
 export default function Scene({ conditions }: SceneProps) {

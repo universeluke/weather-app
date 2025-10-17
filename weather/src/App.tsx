@@ -3,13 +3,38 @@ import Weather from "./components/Weather";
 import styles from "./App.module.scss";
 import formatLocalTime from "./utils/formatLocalTime";
 
+type WeatherCondition =
+  | "clearDay"
+  | "clearNight"
+  | "rainyDay"
+  | "rainyNight"
+  | "cloudyDay"
+  | "cloudyNight"
+  | "snowyDay"
+  | "snowyNight";
+
+interface CurrentWeather {
+  time: string;
+  temperature_2m: number;
+  is_day: 0 | 1;
+  cloud_cover: number;
+  rain: number;
+  snowfall: number;
+  wind_speed_10m: number;
+}
+
+interface WeatherApiResponse {
+  current: CurrentWeather;
+}
+
 function App() {
   const [currentLocation, setCurrentLocation] = useState<string | null>(null);
   const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(
     null
   );
-  const [currentWeatherData, setCurrentWeatherData] = useState<any>(null);
-  const [dayNight, setDayNight] = useState<string>("day");
+  const [currentWeatherData, setCurrentWeatherData] =
+    useState<WeatherApiResponse | null>(null);
+  const [dayNight, setDayNight] = useState<WeatherCondition>("clearDay");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(

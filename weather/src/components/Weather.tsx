@@ -2,14 +2,42 @@ import { useEffect, useState } from "react";
 import Scene from "./Scene";
 import styles from "./Weather.module.scss";
 
+type WeatherCondition =
+  | "clearDay"
+  | "clearNight"
+  | "rainyDay"
+  | "rainyNight"
+  | "cloudyDay"
+  | "cloudyNight"
+  | "snowyDay"
+  | "snowyNight";
+
+interface Star {
+  top: number;
+  left: number;
+  delay: number;
+}
+
+interface Rain {
+  left: number;
+  delay: number;
+  duration: number;
+}
+
+interface Snow {
+  left: number;
+  delay: number;
+  duration: number;
+}
+
 interface WeatherProps {
-  conditions: string;
+  conditions: WeatherCondition;
 }
 
 export default function Weather({ conditions }: WeatherProps) {
-  const [stars, setStars] = useState([]);
-  const [rains, setRains] = useState([]);
-  const [snows, setSnows] = useState([]);
+  const [stars, setStars] = useState<Star[]>([]);
+  const [rains, setRains] = useState<Rain[]>([]);
+  const [snows, setSnows] = useState<Snow[]>([]);
 
   useEffect(() => {
     const generatedStars = Array.from({ length: 100 }, () => ({
