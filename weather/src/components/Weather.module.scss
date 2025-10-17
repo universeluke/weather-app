@@ -18,13 +18,12 @@ body {
 }
 
 .sun {
-  height: 30px;
-  width: 30px;
   position: absolute;
   top: 140px;
   left: 30vw;
   border-radius: 50%;
   transition: all 3s ease;
+  background-color: transparent;
 }
 
 .moonContainer {

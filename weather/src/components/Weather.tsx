@@ -66,15 +66,12 @@ export default function Weather({ conditions }: WeatherProps) {
       snowyNight: { opacity: "0" },
       clearDay: {
         opacity: "1",
-        boxShadow: "0px 0px 50px 60px rgb(255, 235, 53)",
-        backgroundColor: "rgb(255, 235, 53)",
         animation: "throb 2s ease-in-out infinite",
       },
       rainyDay: { opacity: "0" },
       cloudyDay: {
         opacity: "0.6",
-        boxShadow: "0px 0px 60px 60px rgba(228, 222, 161, 1)",
-        backgroundColor: "rgba(228, 222, 161, 1)",
+        boxShadow: "0px 0px 80px 60px rgba(228, 222, 161, 1)",
       },
       snowyDay: { opacity: "0" },
     },
