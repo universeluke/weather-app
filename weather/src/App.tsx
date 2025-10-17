@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Weather from "./components/Weather";
 import styles from "./App.module.scss";
 import formatLocalTime from "./utils/formatLocalTime";
+import Thermometer from "./components/Thermometer";
 
 type WeatherCondition =
   | "clearDay"
@@ -180,6 +181,7 @@ function App() {
           <p className={styles.temperature}>
             {currentWeatherData.current.temperature_2m} °C
           </p>
+          <Thermometer />
           <p className={styles.time}>
             {formatLocalTime(currentWeatherData.current.time)}
           </p>
