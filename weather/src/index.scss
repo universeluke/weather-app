@@ -6,3 +6,17 @@ body {
   font-family: "LEMONMILK";
   src: local("LEMONMILK"), url("./fonts/LEMONMILK-Light.otf") format("opentype");
 }
+
+:global {
+  @keyframes throb {
+    0% {
+      box-shadow: 0px 0px 50px 60px rgb(255, 235, 53);
+    }
+    50% {
+      box-shadow: 0px 0px 40px 50px rgb(255, 235, 53);
+    }
+    100% {
+      box-shadow: 0px 0px 50px 60px rgb(255, 235, 53);
+    }
+  }
+}
